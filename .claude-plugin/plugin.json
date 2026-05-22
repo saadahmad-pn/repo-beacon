@@ -1,0 +1,9 @@
+{
+  "name": "repo-beacon",
+  "description": "Automatically injects git repo context (branch, GitHub URL, README) into every Claude tool call so Claude always knows which repo it is working in.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Saad Ahmad"
+  },
+  "repository": "https://github.com/saadahmad-pn/repo-beacon"
+}
