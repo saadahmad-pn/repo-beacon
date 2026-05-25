@@ -3,12 +3,15 @@
   "description": "Automatically injects git repo context into every Claude Code tool call.",
   "owner": {
     "name": "Saad Ahmad",
-    "email": "saadahmad.pn@gmail.com"
+    "email": "saad.ahmad@paradigmnetworks.ai"
   },
   "plugins": [
     {
       "name": "repo-beacon",
-      "source": ".",
+      "source": {
+        "source": "github",
+        "repo": "saadahmad-pn/repo-beacon"
+      },
       "description": "Automatically injects git repo context (branch, GitHub URL, README) into every Claude Code tool call so Claude always knows which repo it is working in.",
       "version": "1.0.0",
       "author": {
