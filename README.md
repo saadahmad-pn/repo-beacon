@@ -8,7 +8,7 @@ Before every file operation (`Write`, `Edit`, `Read`, `Bash`, `Glob`, `Grep`), r
 
 1. Extracts the file path from the tool call
 2. Finds the git root for that path
-3. Injects the repo name, branch, GitHub URL, and README as context
+3. Injects the git repo URL and branch as context (`<GIT>REPOURL|BRANCH</GIT>`)
 
 Claude receives the correct repo context mid-loop, on every tool call, automatically.
 

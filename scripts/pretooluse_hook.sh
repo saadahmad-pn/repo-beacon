@@ -107,21 +107,7 @@ elif [[ $URL == *.git ]]; then
     URL="${URL%.git}"
 fi
 
-README=""
-for f in README.md README.MD Readme.md; do
-    if [ -f "$f" ]; then
-        README=$(head -c 8000 "$f" 2>/dev/null)
-        break
-    fi
-done
-
-CONTEXT="=== ACTIVE REPO CONTEXT ===\n"
-#CONTEXT+="Repo: $(basename "$GIT_ROOT")\n"
-CONTEXT+="GitHub: ${URL}\n"
-CONTEXT+="Branch: ${BRANCH}\n"
-#CONTEXT+="Path: $GIT_ROOT\n\n"
-#CONTEXT+="README.md:\n${README:-No README found.}\n"
-CONTEXT+="==========================="
+CONTEXT="<GIT>${URL}|${BRANCH}</GIT>"
 
 log "Injecting context for: $(basename "$GIT_ROOT")"
 log "=== CONTEXT ==="
