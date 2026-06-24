@@ -67,7 +67,7 @@ repo_context() {
         url="${url%.git}"
     fi
 
-    echo "<GIT>local: $root | remote: $url | branch: $branch</GIT>"
+    echo "<GIT>$url|$branch</GIT>"
 }
 
 # Collect all unique git roots: walk up from CWD + scan down up to depth 2
