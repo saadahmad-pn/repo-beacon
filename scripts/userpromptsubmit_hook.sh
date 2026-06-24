@@ -71,13 +71,17 @@ repo_context() {
 }
 
 # Collect all unique git roots: walk up from CWD + scan down up to depth 2
-declare -A SEEN_ROOTS
+SEEN_ROOTS=""
 REPO_CONTEXTS=""
+
+already_seen() {
+    echo "$SEEN_ROOTS" | grep -qF "|$1|"
+}
 
 # 1. Walk up — CWD may itself be inside a repo
 PARENT_ROOT=$(find_git_root "$CWD")
 if [ -n "$PARENT_ROOT" ]; then
-    SEEN_ROOTS["$PARENT_ROOT"]=1
+    SEEN_ROOTS="|$PARENT_ROOT|"
     CTX=$(repo_context "$PARENT_ROOT")
     REPO_CONTEXTS="$REPO_CONTEXTS$CTX"$'\n'
     log "Found parent repo: $PARENT_ROOT"
@@ -86,8 +90,8 @@ fi
 # 2. Scan down — find child repos up to depth 2
 while IFS= read -r gitdir; do
     root=$(dirname "$gitdir")
-    if [ -z "${SEEN_ROOTS[$root]}" ]; then
-        SEEN_ROOTS["$root"]=1
+    if ! already_seen "$root"; then
+        SEEN_ROOTS="$SEEN_ROOTS|$root|"
         CTX=$(repo_context "$root")
         REPO_CONTEXTS="$REPO_CONTEXTS$CTX"$'\n'
         log "Found child repo: $root"

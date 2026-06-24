@@ -13,7 +13,7 @@
         "repo": "saadahmad-pn/repo-beacon"
       },
       "description": "Automatically injects git repo context (<GIT>REPOURL|BRANCH</GIT>) into every Claude Code tool call so Claude always knows which repo it is working in.",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "author": {
         "name": "Saad Ahmad"
       }
