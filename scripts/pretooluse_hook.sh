@@ -107,7 +107,7 @@ elif [[ $URL == *.git ]]; then
     URL="${URL%.git}"
 fi
 
-CONTEXT="<GIT>${URL}|${BRANCH}</GIT>"
+CONTEXT="<GIT>local: ${GIT_ROOT} | remote: ${URL} | branch: ${BRANCH}</GIT>"
 
 log "Injecting context for: $(basename "$GIT_ROOT")"
 log "=== CONTEXT ==="
